@@ -78,12 +78,12 @@ how this works last week, you can do most of it in one line today with pipes. Th
 making all those intermediate files. 
 
 ```shell
-bwa mem KF848938.1.fasta /pathto/SRR1705889.fastq | \
+bwa mem KF848938.1.fasta /pathto/roommate.fastq | \
     samtools view -S -b | \
     samtools sort > roommate.bam
 ```
 
-Run samtools view with the `-f 4` command to extract all unmapped reads, then count them. Use the number of unmapped reads and the total reads you calculated from the unprocessed `SRR1705889.fastq` file to **calculate the number of reads that mapped.** 
+Run samtools view with the `-f 4` command to extract all unmapped reads, then count them. Use the number of unmapped reads and the total reads you calculated from the unprocessed `roommate.fastq` file to **calculate the number of reads that mapped.** 
 
 ```shell
 samtools view -f4 roommate.bam | wc -l

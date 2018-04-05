@@ -9,13 +9,14 @@ The results showed that your roommate’s virus closely matched the HI profile f
 
 You’ve heard of viral quasispecies, and suspect that maybe a small portion of the virus population mutated and evolved while replicating inside your roommate’s cells, which could explain how it was able to infect you. To find out, you have your friends set up a targeted deep sequencing experiment to analyze the HA genes in your roommate’s viral sample. They set up an Illumina single-end sequencing run. When they send you the results, you start analyzing your roommate’s sequence right away.
 
-## 1. Git from the command line
-TODO setting up lab notebook and report from the command line
+## 1. Setting up
+TODO remove lab1 data
+TODO setting up lab notebook and report from the command line git
 
 ## 2. Inspect the data from your roommate
 
 This sequencing data can is in the `public/week2` directory. Your roommate’s data is labeled
-SRR1705889. Record how many reads there are in this file, then look at the first 20 lines with the
+`SRR1705889`. Record how many reads there are in this file, then look at the first 20 lines with the
 head command and answer the IClicker question.
 
 Reminder - to get from your home directory to the parent cs185s class directory:

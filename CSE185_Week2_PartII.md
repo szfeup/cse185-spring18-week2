@@ -61,7 +61,7 @@ think is better for error correction?
 
 ## 9. Epitope mapping
 
-Use the epitope locations listed in Munoz et al (on Triton Ed) to determine if any of the highconfidence (> 3 std deviations away from reference error rate) mutations from your roommate’s flu infection are located in an epitope region of hemeagglutinin. (Epitopes are the parts of the protein structure recognized by antibodies). If so, list which epitope regions are mutated.
+Use the epitope locations listed in Munoz et al (listed under reading for the lab) to determine if any of the highconfidence (> 3 std deviations away from reference error rate) mutations from your roommate’s flu infection are located in an epitope region of hemeagglutinin. (Epitopes are the parts of the protein structure recognized by antibodies). If so, list which epitope regions are mutated.
 
 ## 10. Lab Report
 

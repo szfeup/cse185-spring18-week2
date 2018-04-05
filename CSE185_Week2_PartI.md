@@ -16,7 +16,7 @@ TODO setting up lab notebook and report from the command line git
 ## 2. Inspect the data from your roommate
 
 This sequencing data can is in the `public/week2` directory. Your roommate’s data is labeled
-`SRR1705889`. Record how many reads there are in this file, then look at the first 20 lines with the
+`roommate.fastq`. Record how many reads there are in this file, then look at the first 20 lines with the
 head command and answer the IClicker question.
 
 Reminder - to get from your home directory to the parent cs185s class directory:
@@ -28,6 +28,10 @@ Since there seem to be reads of multiple lengths, you suspect the data may have 
 somehow. You can use a bash one-liner with `awk`, `sort`, and `uniq` to find out. Below is a reminder for
 the general syntax of awk.
 
+<blockquote>
+**UNIX TIP**: A pipe (`|`) after a command redirects the output of the previous command as input to the next command. 
+</blockquote>
+
 ```shell
 awk '/search_pattern/ {actiontotakeonmatches; otheractions;}' file_to_awk
 ```
@@ -35,7 +39,7 @@ awk '/search_pattern/ {actiontotakeonmatches; otheractions;}' file_to_awk
 For the actual command (below), use pipes (`|`) to send the output of one command as input to the next. 
 
 ```shell
-cat SRR1705889.fastq | awk 'NR%4==0 {print length}' | sort -n | uniq -c
+cat roommate.fastq | awk 'NR%4==0 {print length}' | sort -n | uniq -c
 ```
 
 Let's walk through the commands we piped together:
@@ -48,13 +52,17 @@ Let's walk through the commands we piped together:
 with your friends in the med school, and it turns out that yes, they trimmed the low quality bases from
 the ends of the reads for you.
 
-## 3. Align your roomates data to the reference sequence
+## 3. Align your roommate's data to the reference sequence
 
 The reference sequence for the influenza hemagglutinin gene is not in the public folder, so you will have to
 download it from NCBI. This can be done with a command from the EntrezDirect utility, which is
 installed for this course. 
 
-`cd` into your working directory, make a folder for `week2`, and use the EntrezDirect command `efetch` to download the reference sequence, which has the NCBI id number: KF848938.1. An example of the `efetch` usage is below, you can also type `efetch -help` for more information. You must specify which NCBI database to use, the id or ascension number of the sequence, and the format you would like. Redirect the output into a file with the “.fasta” extension:
+`cd` into the `week2` directory you created above, and use the EntrezDirect command `efetch` to download the reference sequence, which has the NCBI id number: KF848938.1. An example of the `efetch` usage is below, you can also type `efetch -help` for more information. You must specify which NCBI database to use, the id or accession number of the sequence, and the format you would like. Redirect the output into a file with the “.fasta” extension.
+
+<blockquote>
+**UNIX TIP**: Using the symbol `>` after a command redirects the output (called "standard output") to a file rather directly to the screen.
+</blockquote>
 
 ```shell
 efetch -db nucleotide -id KF848938.1 -format fasta > KF848938.1.fasta

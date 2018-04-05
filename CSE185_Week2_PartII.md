@@ -27,7 +27,6 @@ Fastq data for the three controls (from sequencing of isogenic reference samples
 `public/week2` folder. The three controls are called `SRR1705858.fastq`, `SRR1705859.fastq`, and
 `SRR1705860.fastq`. Calculate how many reads are in each file, and **record it in your notebook.**
 
-
 **Calculate a rough estimate of the coverage** in your samples. Since all 3 controls and your roommates
 sample have about the same number of reads, you can use any one of the read counts for this. For
 read length, use 151, even though we know some of the reads are shorter. Remember, coverage is
@@ -39,6 +38,30 @@ lab report.
 fastq file to the reference (`KF848938.1.fasta`), convert it to a bam file, and sort it. You need to
 make a separate bam alignment for each control sample, but you do not have to index the reference
 again. Be sure to give each bam file a unique name. Use samtools to index each of the new control alignment (bam) files. 
+
+**Automating the analysis (optional, but highly recommended)** To make your life easier, you may want to take advantage of bash variables and for loops so you don't have to copy the same code over and over again. Below is an example of how to set and access a variable in bash:
+
+```
+myVariable=200
+echo $myVariable
+```
+
+Note, you must not include any extra spaces around the "=" and you need to use a $ symbol to access the variable. `echo` simply prints results to the terminal's standard output.
+
+If you'd like to run the same command multiple times but slightly altered, you can use a for loop. e.g.:
+```
+for x in sample1 sample2 sample3
+do
+  echo "let's run some commands on $x"
+  echo "bwa mem /path/to/index /path/to/$x.fastq
+done
+```
+(Of course, you will need to remove the `echo` and edit the paths in the `bwa` command above).
+
+<blockquote>
+**UNIX TIP**: If you want to run a multiple line command, you can put all the lines separated by semicolons and run on one command. e.g. "for x in sample1 sample2; do echo $x; done". Alternatively, you can enter the commands line by line or copy and paste the entire multi-line command from a text file such as your lab notebook.
+</blockquote>
+
 
 ## 7. Use VarScan to look for rare variants in the reference files.
 

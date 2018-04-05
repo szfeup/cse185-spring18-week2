@@ -44,13 +44,13 @@ again. Be sure to give each bam file a unique name. Use samtools to index each o
 
 Run VarScan, with a minimum variant frequency of 0.001 (0.1%) on each of the reference alignments. Be sure to tell VarScan to only output variants, and to format the output in the vcf format.
 
-Use awk to parse each vcf file so that you get three lists containing position, reference base, alternative base, and frequency. Copy those lists into a spreadsheet, and into your lab notebook. 
+Use awk to parse each vcf file so that you get three lists containing position, reference base, alternative base, and frequency. Copy those lists into a spreadsheet. You should upload this spreadsheet and cite as supplementary data in your lab report. 
 
 ## 8. Compare the control results to your roommate results
 
 Examine the data in the spreadsheet. Are there any positions in your roommate’s sample (aside from the common ones from last week) that stick out as possibly being more than just sequencing error? Calculate the average and standard deviation of the frequencies reported within each reference (you should have 3 averages and 3 standard deviations, and put them in the same units). 
 
-Answer the <font color="blue">i>Clicker question</font> about the error rate of sequencing.
+Answer the IClicker about the error rate of sequencing.
 
 Did VarScan report rare mutations in your roommate’s file with frequencies that are more than 3 standard deviations away from the averages in the reference files? If there are, use WebDSV to identify the original amino acid at each position, position number in the protein sequence, and the amino acid resulting from the mutation. Record these in your notebook. 
 
@@ -61,7 +61,7 @@ think is better for error correction?
 
 ## 9. Epitope mapping
 
-Use the epitope locations listed in Munoz et al (listed under reading for the lab) to determine if any of the highconfidence (> 3 std deviations away from reference error rate) mutations from your roommate’s flu infection are located in an epitope region of hemeagglutinin. (Epitopes are the parts of the protein structure recognized by antibodies). If so, list which epitope regions are mutated.
+Use the epitope locations listed in Munoz et al (listed under reading for the lab) to determine if any of the high confidence (> 3 std deviations away from reference error rate) mutations from your roommate’s flu infection are located in an epitope region of hemeagglutinin. (Epitopes are the parts of the protein structure recognized by antibodies). If so, list which epitope regions are mutated.
 
 ## 10. Lab Report
 

@@ -1,5 +1,5 @@
 # Week 2: Why did I get the flu? (part I)
-Skills covered: review of tools from week 1, deep sequence data, awk one-liners, git
+Skills covered: review of tools from week 1, deep sequence data, awk one-liners, git, (optional) emacs
 
 This year, you prudently got the flu vaccine. So when your roommate, who forgot to get vaccinated, came down with the flu, you weren’t worried. But somehow, several days later, you started feeling feverish, weak, and all-around-awful. You knew it was the flu, but how could this be?!
 
@@ -10,8 +10,54 @@ The results showed that your roommate’s virus closely matched the HI profile f
 You’ve heard of viral quasispecies, and suspect that maybe a small portion of the virus population mutated and evolved while replicating inside your roommate’s cells, which could explain how it was able to infect you. To find out, you have your friends set up a targeted deep sequencing experiment to analyze the HA genes in your roommate’s viral sample. They set up an Illumina single-end sequencing run. When they send you the results, you start analyzing your roommate’s sequence right away.
 
 ## 1. Setting up
-TODO remove lab1 data
-TODO setting up lab notebook and report from the command line git
+First of all, since you only have a limited (~10GB) disk space quota for the course, let's clean out our directories from last week. You won't be needing any of the data from Lab 1 (and even if you do, your lab notebook should everything you need to reproduce your results!). So go ahead and use `rm` to remove data files. You can remove files one-by-one (`rm filename`), but that will take a while. Typing `rm week1/*` should remove all the files in your week 1 folder. Please be careful with this command! You should always triple check before running an `rm` command to make sure you don't irreversibly delete something you will need later.
+
+Now, we'll first get set up using Git from the command line. Last week, we edited all the files from the web browser. But we can also get all these files to edit through the terminal. 
+
+Git is a really useful framework for keeping track of changes to files both for yourself or when working with a team of people. It maintains files in a "repository". You can update the repository through "commits". Each time you commit to the repository, Git will keep track of exactly what changes were made along with a short message describing the purpose of the changes. It can get infinitely complicated but today we'll go through some basic functionality.
+
+To get started, we will make a "clone" (copy) of your assignment repository in your home directory in `ieng6.ucsd.edu`. Copy the base URL for the your repository (e.g., https://github.com/cse185-sp18/cse185-week2-<username>/). Log into the cluster and navigate to your home directory for the course using `cd`. Clone the repository using the following command:
+```
+git clone https://github.com/cse185-sp18/cse185-week2-<username/ week2
+```
+
+This will make a copy of the entire repository in a folder named `week2`. We can now edit and add files to the repository directly from the command line. First, let's go through adding a new file for your lab notebook. You can use your favorite text editor to make a new file, but all examples here will use `emacs` (because of course it is way better than vim, and definitely way cooler than nano. But if you already have a favorite editor then go for it).
+
+```
+emacs CSE185_Week2_LabNotebook.md
+```
+will create the file. Add some text (e.g. a title and the date). Use `ctrl-x ctrl-s` to save the file (`ctrl` refers to the control key). Now use `ctrl-x ctrl-c` to exit.
+
+Now, let's add that file to the repository. This tells `git` to keep track of that file. You can also keep untracked files in this directory. Git won't pay attention to them unless they're added.
+```
+git add CSE185_Week2_LabNotebook.md
+```
+
+Type `git status` from anywhere in the repository folder to see what changes have happened since the last commit. You should see that you have added a new file (this will likely be in green on your terminal). To tell Git to update our local repository with this change, we need to commit it, along with a short message describing the commit:
+```
+git commit -a -m"Adding lab notebook for Week 2"
+```
+The `-m` option is to give a descriptive message about your commit. The `-a` option should be used pretty much any time you commit, since it tells `git` to automatically include any modifications to the repository you've made in the commit. Now if you type 'git status' you will see a message that there is nothing to commit.
+
+Finally, to make these changes actually visible in the repository on Github, we have to "push" them:
+```
+git push
+```
+This will ask for your Github username and password. After you push, go back to the web browser and see if your changes appear there.
+
+If you ever make changes on the web browser and need to update the clone of your repository on `ieng6.ucsd.edu`, you can "pull" those changes using:
+
+```
+git pull
+```
+
+You are encouraged to edit your files on the command line, although we won't know the difference if you edit on the browser vs. the command line. Next week we'll write our own script that will need to be included in the submission. It will be pretty annoying to edit that from the web browswer so it's worth getting comfortable with the command line git workflow this week. 
+
+**Reminder: unless you do "git push" we will not see your changes. So make sure you commit and push all changes before the deadline on Tuesday! Whatever you see in the web browser for your repository is what we will see **
+
+<blockquote>
+**UNIX TIP**: It is annoying to keep opening and closing a text file to make edits. One solution is to have two open terminal screens, one where your lab notebook is open for editing and another where you are running commands. Alternatively, you can do all this is one terminal screen by taking advantage of the UNIX concepts of "foreground" and "background". If you are editing a file in emacs, type "ctrl-Z" to put emacs in the background. This will keep it running, but return you to the terminal where you can enter new commands. Once you've run your next command and would like to copy it back to emacs, type "fg" which continues the most recently stopped job by bringing it back to the foreground. This will take you back to emacs where you can keep editing where you left off. Using "ctrl-Z" and "fg" allow you to easily copy and paste commands back and forth from your notebook to the terminal and vice-versa.
+</blockquote>
 
 ## 2. Inspect the data from your roommate
 

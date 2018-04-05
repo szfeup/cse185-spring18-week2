@@ -109,31 +109,35 @@ samtools mpileup \
     roommate.bam > roommate.mpileup
 ```
 
-Run VarScan on the mpileup. You may have to `cp` the VarScan.jar file from `week1` to `week2`. First, look for positions where most of the viruses infecting your roommate differ from the reference. Maybe there is a common mutation that wouldn’t have shown up in the HI test. Use a high minimum variant frequency cut-off to find only those mutants present in most (95% or more = 0.95) of the viral DNA molecules. 
+Run VarScan on the mpileup. You can use the `VarScan` jar file in the `public/bin` directory. First, look for positions where most of the viruses infecting your roommate differ from the reference. Maybe there is a common mutation that wouldn’t have shown up in the HI test. Use a high minimum variant frequency cut-off to find only those mutants present in most (95% or more = 0.95) of the viral DNA molecules. 
 
 ```shell
-java -jar VarScan.jar mpileup2snp \
+java -jar /home/linux/ieng6/cs185s/public/tools/VarScan.jar mpileup2snp \
     roommate.mpileup \
     --min-var-freq 0.95 \
     --variants --output-vcf 1 > roommate.vcf
 ```
 
 How many variants are reported back? To clean up the data and allow you to easily copy and paste,
-**edit the awk script below so it only output the fields you are interested in** (position, reference base,
+**edit the awk script below so it only outputs the fields you are interested in** (position, reference base,
 alternate base, in that order). Run the command, then **record the reference base, position, and mutant
 base in your lab notebook.**
 
+<blockquote>
+**UNIX TIP**: The grep tool allows you to easily filter lines using [regular expressions](http://www.rexegg.com/regex-quickstart.html). The grep command below means to filter all lines starting with a "#" symbol (header lines).
+</blockquote>
+
 ```shell
-cat roommate.vcf | awk 'NR>24 {print $1, $2}' # Note you'll need to edit this
+cat roommate.vcf | grep -v "^#" | {print $1, $2}' # Note you'll need to edit this
 ```
 
 What do these mutations do? Could they be what allowed your roommate’s virus to escape the antibodies in your body from the flu vaccine? Since we are only looking at a single gene (and since the VEP doesn’t have a function for viruses) we will do this manually. In a browser, open the free, online sequence editor called WebDSV at
 http://www.molbiotools.com/WebDSV/index.html
 
-Go to NCBI (in a browser) and search for the reference sequence KF848938.1. Click on the FASTA link in the first result, then copy and paste the DNA sequence (not the header) where it says ‘paste sequence here’ on WebDSV. Click the yellow "process" button, then click "select all" and "translate". Close the pop up window, and when you get back to WebDSV, you should see the single-letter amino acid code above your sequence in the bottom window.
+Go to NCBI (in a browser) and search for the reference sequence KF848938.1. Click on the FASTA link in the first result, then copy and paste the DNA sequence (not the header) where it says ‘paste sequence here’ on WebDSV. Alternatively you can copy the sequence from the reference fasta file you already downloaded to your directory. Click the yellow "process" button, then click "select all" and "translate". Close the pop up window, and when you get back to WebDSV, you should see the single-letter amino acid code above your sequence in the bottom window.
 
 In the right side of the app, click the button with "AA" on it to open a codon table. For each position in your list, find the codon it is a part of. (You can hover over the bases to show the position, and you can hover over the amino acids to show the codon). Use the codon table to translate each mutation, and **record the original codon, mutated codon, original amino acid, its position in the protein, and the mutated amino acid. Then, record
-whether the change is synonymous or non-synonymous.**
+whether the change is synonymous or missense.**
 
 Example:
 A72G ACA>ACG Thr24Thr synonymous
@@ -146,7 +150,7 @@ Now try looking for rare variants. Set the min var freq to 0.001 (0.1%) and run 
 same mpileup file. 
 
 ```shell
-java -jar VarScan.jar mpileup2snp \
+java -jar /home/linux/ieng6/cs185s/public/tools/VarScan.jar mpileup2snp \
     roommate.mpileup \
     --min-var-freq 0.001 \
     --variants --output-vcf 1 > roommate_rare.vcf
@@ -157,7 +161,7 @@ to extract the position, reference base, and frequency. The frequency is part of
 command below.
 
 ```shell
-cat roommate_rare.vcf | awk 'NR>24 {print $2, $4, $5, $10}'
+cat roommate_rare.vcf | grep -v "^#" | awk '{print $2, $4, $5, $10}'
 ```
 
 This DOES contain the frequency, but it’s buried in that last really long field. Fortunately, awk can use

@@ -43,7 +43,7 @@ Finally, to make these changes actually visible in the repository on Github, we 
 ```
 git push
 ```
-This will ask for your Github username and password. After you push, go back to the web browser and see if your changes appear there.
+This will ask for your Github username and password. After you push, go back to the web browser and see if your changes appear there. You should be able to see (in blue at the top of the list of files) when your last commit was. You can click on that to see exactly what changed.
 
 If you ever make changes on the web browser and need to update the clone of your repository on `ieng6.ucsd.edu`, you can "pull" those changes using:
 

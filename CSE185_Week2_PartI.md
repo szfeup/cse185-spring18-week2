@@ -10,7 +10,7 @@ The results showed that your roommate’s virus closely matched the HI profile f
 You’ve heard of viral quasispecies, and suspect that maybe a small portion of the virus population mutated and evolved while replicating inside your roommate’s cells, which could explain how it was able to infect you. To find out, you have your friends set up a targeted deep sequencing experiment to analyze the HA genes in your roommate’s viral sample. They set up an Illumina single-end sequencing run. When they send you the results, you start analyzing your roommate’s sequence right away.
 
 ## 1. Setting up
-First of all, since you only have a limited (~10GB) disk space quota for the course, let's clean out our directories from last week. You won't be needing any of the data from Lab 1 (and even if you do, your lab notebook should everything you need to reproduce your results!). So go ahead and use `rm` to remove data files. You can remove files one-by-one (`rm filename`), but that will take a while. Typing `rm week1/*` should remove all the files in your week 1 folder. Please be careful with this command! You should always triple check before running an `rm` command to make sure you don't irreversibly delete something you will need later.
+First of all, since you only have a limited (~10GB) disk space quota for the course, let's clean out our directories from last week. You won't be needing any of the data from Lab 1 (and even if you do, your lab notebook should have everything you need to reproduce your results!). So go ahead and use `rm` to remove data files. You can remove files one-by-one (`rm filename`), but that will take a while. Typing `rm week1/*` should remove all the files in your week 1 folder. Please be careful with this command! You should always triple check before running an `rm` command to make sure you don't irreversibly delete something you will need later.
 
 Now, we'll first get set up using Git from the command line. Last week, we edited all the files from the web browser. But we can also get all these files to edit through the terminal. 
 
@@ -61,7 +61,7 @@ You are encouraged to edit your files on the command line, although we won't kno
 
 ## 2. Inspect the data from your roommate
 
-This sequencing data can is in the `public/week2` directory. Your roommate’s data is labeled
+This sequencing data is in the `public/week2` directory. Your roommate’s data is labeled
 `roommate.fastq`. Record how many reads there are in this file, then look at the first 20 lines with the
 head command and answer the IClicker question.
 
@@ -190,7 +190,7 @@ A72G ACA>ACG Thr24Thr synonymous
 
 Repeat with the rest of the variants, record the results, and answer the IClicker question.
 
-## 4. Look for rare variants with VarScan
+## 6. Look for rare variants with VarScan
 
 Now try looking for rare variants. Set the min var freq to 0.001 (0.1%) and run the scan again, on the
 same mpileup file. 

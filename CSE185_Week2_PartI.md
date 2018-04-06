@@ -14,7 +14,7 @@ First of all, since you only have a limited (~10GB) disk space quota for the cou
 
 Now, we'll first get set up using Git from the command line. Last week, we edited all the files from the web browser. But we can also get all these files to edit through the terminal. 
 
-Git is a really useful framework for keeping track of changes to files both for yourself or when working with a team of people. It maintains files in a "repository". You can update the repository through "commits". Each time you commit to the repository, Git will keep track of exactly what changes were made along with a short message describing the purpose of the changes. It can get infinitely complicated but today we'll go through some basic functionality.
+Git is a really useful framework for keeping track of changes to files both for yourself or when working with a team of people. It maintains files in a "repository" (aka the main directory, such as "cse185-spring18-week2"). You can update the repository through "commits". Each time you commit to the repository, Git will keep track of exactly what changes were made along with a short message describing the purpose of the changes. It can get infinitely complicated but today we'll go through some basic functionality.
 
 To get started, we will make a "clone" (copy) of your assignment repository in your home directory in `ieng6.ucsd.edu`. Copy the base URL for the your repository (e.g., https://github.com/cse185-sp18/cse185-week2-<username>/). Log into the cluster and navigate to your home directory for the course using `cd`. Clone the repository using the following command:
 ```

@@ -61,7 +61,7 @@ You are encouraged to edit your files on the command line, although we won't kno
 
 ## 2. Inspect the data from your roommate
 
-This sequencing data can is in the `public/week2` directory. Your roommate’s data is labeled
+This sequencing data is in the `public/week2` directory. Your roommate’s data is labeled
 `roommate.fastq`. Record how many reads there are in this file, then look at the first 20 lines with the
 head command and answer the IClicker question.
 
